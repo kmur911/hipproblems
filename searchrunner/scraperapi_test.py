@@ -37,7 +37,7 @@ def test_flight_search():
     else:
         msg += " Looks good!"
 
-    print msg
+    print(msg)
 
 
 if __name__ == "__main__":
