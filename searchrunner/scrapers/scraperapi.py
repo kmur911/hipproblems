@@ -1,5 +1,5 @@
 from tornado import gen, ioloop, web
-from searchrunner.scrapers import get_scraper
+from scrapers import get_scraper
 
 
 class ScraperApiHandler(web.RequestHandler):

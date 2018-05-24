@@ -1,8 +1,8 @@
-from searchrunner.scrapers.expedia import ExpediaScraper
-from searchrunner.scrapers.orbitz import OrbitzScraper
-from searchrunner.scrapers.priceline import PricelineScraper
-from searchrunner.scrapers.travelocity import TravelocityScraper
-from searchrunner.scrapers.united import UnitedScraper
+from expedia import ExpediaScraper
+from orbitz import OrbitzScraper
+from priceline import PricelineScraper
+from travelocity import TravelocityScraper
+from united import UnitedScraper
 
 
 SCRAPERS = [

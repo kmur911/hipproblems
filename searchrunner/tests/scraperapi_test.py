@@ -12,7 +12,7 @@ EXPECTED_COUNTS = {
 
 
 def test_flight_search():
-    resp = requests.get("http://localhost:8000/flights/search")
+    resp = requests.get("http://aggregator:8000/flights/search")
     results = resp.json()["results"]
 
     provider_counts = Counter()

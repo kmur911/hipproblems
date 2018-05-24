@@ -1,4 +1,4 @@
-from searchrunner.scrapers.common import Scraper
+from scrapers.common import Scraper
 
 
 class PricelineScraper(Scraper):

@@ -1,46 +1,16 @@
 # Building a Flight Search API
 
-When a user does a flight search on Hipmunk we search many partner sites simultaneously to ensure we give them the best options. In this problem, you'll build an API that queries each of our different partners and merges their results together.
+To run services:
+`make up`
 
-# Background
+To run test (after starting services):
+`make test`
 
-Hipmunk has a scraper farm that we use to search our partner sites. The name scraper is a legacy holdover from when we actually scraped them. Nowadays, we query their APIs :)
+To clean up at the end:
+`make clean`
 
-For this problem, the scraper farm will be emulated by a simple HTTP server.
+You can still hit the aggregator and scraperapi services directly at localhost:8000 and localhost:9000 respectively.
 
-To start it, run `python -m searchrunner.scraperapi`. This should start a server listening on port 9000.
+Requirements: Docker, docker-compose, the ability to download python images from Docker Hub
 
-This server exposes exactly one endpoint:
 
-- `GET /scrapers/<provider>` - returns flight results for the specified provider as JSON
-
-Here are the providers that are available:
-
-- Expedia
-- Orbitz
-- Priceline
-- Travelocity
-- United
-
-# The Problem
-
-Your job is to build an API that queries each provider via HTTP and returns a merged list containing all of their results.
-
-Requirements:
-- You must search all providers via HTTP
-- The results should be sorted by agony
-- The scraper APIs already return results sorted by agony, you should take advantage of this!
-
-**You may write your API in whatever language you want. Don't feel stuck to our tech stack!** Please use whatever you think will present your best possible work. We’d much rather read a clean Node app than a Tornado hairball.
-
-It should run on port 8000 and expose one HTTP endpoint:
-
-- `GET /flights/search` - returns flight results from all providers as JSON
-
-The response should look identical to a scraper API response except that it will contain results from all providers while still sorted by agony.
-
-In addition to the correctness of the code you submit, **we also care about the quality.** Understand that this sample of work represents you, and use all best practices in your implementation. We place a high premium on code readability at Hipmunk, and your code will be evaluated with that in mind. Include any documentation you feel is necessary for us to run your code and understand your thinking behind the choices you've made. 
-
-# Testing
-
-A basic test script has been included. To use it, make sure both the scraper API and your API are running then simply run `python -m searchrunner.scraperapi_test`.
