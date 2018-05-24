@@ -1,5 +1,5 @@
 from tornado import gen, ioloop, web
-from searchrunner.scrapers import get_scraper
+from scrapers import get_scraper
 
 
 class ScraperApiHandler(web.RequestHandler):
@@ -33,7 +33,7 @@ def run():
     )
 
     app.listen(9000)
-    print("Server (re)started. Listening on port 9000")
+    print "Server (re)started. Listening on port 9000"
 
     ioloop.IOLoop.current().start()
 

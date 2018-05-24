@@ -1,18 +1,25 @@
 version: '3'
 services:
   scraper:
-    build: .
-    image: searchrunner/base
+    build: scrapers/
+    image: searchrunner/scraper
     ports:
      - "9000:9000"
-    command: python -m searchrunner.scraperapi
+    command: python -m scrapers.scraperapi
+    networks:
+     - searchrunner_network
 
   aggregator:
-    depends_on:
-     - scraper
-    image: searchrunner/base
+    build: aggregator/
+    image: searchrunner/aggregator
     ports:
      - "8000:8000"
     environment:
      - SCRAPER_HOST=scraper
-    command: gunicorn -w 2 --log-level=info --bind 0.0.0.0:8000 searchrunner.aggregator.aggregatorapi:app
+    command: gunicorn -w 2 --log-level=info --bind 0.0.0.0:8000 aggregatorapi:app
+    networks:
+     - searchrunner_network
+
+networks:
+  searchrunner_network:
+    external: true
